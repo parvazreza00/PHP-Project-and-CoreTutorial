@@ -51,9 +51,9 @@
                     <p class="text-center">Admin Name</p>
                 </div>
                 <div class="button text-center">
-                    <button type="submit" class="btn btn-primary py-1 px-2"><a href="" class="nav-link">Insert Products</a></button>
+                    <button type="submit" class="btn btn-primary py-1 px-2"><a href="insert_product.php" class="nav-link">Insert Products</a></button>
                     <button type="submit" class="btn btn-primary my-1 mx-1"><a href="" class="nav-link">View Products</a></button>
-                    <button type="submit" class="btn btn-primary my-1 mx-1"><a href="" class="nav-link ">Insert Brands</a></button>
+                    <button type="submit" class="btn btn-primary my-1 mx-1"><a href="index.php?insert_brand" class="nav-link ">Insert Brands</a></button>
                     <button type="submit" class="btn btn-primary my-1 mx-1"><a href="" class="nav-link ">View Brands</a></button>
                     <button class="btn btn-primary my-1 mx-1"><a href="index.php?insert_category" class="nav-link ">Insert Category</a></button>
                     <button type="submit" class="btn btn-primary my-1 mx-1"><a href="" class="nav-link ">View Category</a></button>
@@ -67,11 +67,15 @@
     </div>
 
     <!-- fourth child -->
-    <div class="container">
+    <div class="container mt-1">
         <?php 
         if(isset($_GET['insert_category']))
         {
             include('insert_category.php');
+        }
+        if(isset($_GET['insert_brand']))
+        {
+            include('insert_brands.php');
         }
         ?>
     </div>
