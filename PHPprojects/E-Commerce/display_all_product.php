@@ -42,7 +42,7 @@ include('functions/common_functions.php');
                         <a class="nav-link" href="#">Contacts</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i><sup><?php cart_item_count(); ?></sup></a>
+                        <a class="nav-link" href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i><sup>2</sup></a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#">Total Price: <?php totalCartPrice(); ?>/-</a>
@@ -55,10 +55,6 @@ include('functions/common_functions.php');
                </div>
             </div>
          </nav>
-         <!-- calling add to cart -->
-         <?php
-         cart();
-         ?>
          <!-- second child -->
          <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
@@ -84,13 +80,9 @@ include('functions/common_functions.php');
          <!-- fetching product data on the user page -->
          <?php
          // calling function;
-         getProducts();
+         getAllProducts();
          get_unique_categories();
          get_unique_brands();
-
-         // $ip = getIPAddress();  
-         // echo 'User Real IP Address - '.$ip;  
-         
 
          ?>
                
@@ -128,7 +120,7 @@ include('functions/common_functions.php');
             </div>
          </div>
          <!-- last child -->
-         <!-- display footer  -->
+            <!-- display footer  -->
          <?php include('./includes/footer.php'); ?>
       </div>
       <!-- bootstrap js cdn link -->

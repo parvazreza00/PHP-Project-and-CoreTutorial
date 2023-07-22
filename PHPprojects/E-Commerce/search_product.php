@@ -33,7 +33,7 @@ include('functions/common_functions.php');
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="display_all_product.php">Products</a>
+                        <a class="nav-link" href="#">Products</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#">Register</a>
@@ -48,15 +48,15 @@ include('functions/common_functions.php');
                         <a class="nav-link" href="#">Total Price: <?php totalCartPrice(); ?>/-</a>
                      </li>
                   </ul>
-                  <form class="d-flex" role="search" action="search_product.php" method="GET">
+                  <form class="d-flex" role="search" action="" method="GET">
                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
                      <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
                   </form>
                </div>
             </div>
          </nav>
-         <!-- calling add to cart -->
-         <?php
+          <!-- calling add to cart -->
+          <?php
          cart();
          ?>
          <!-- second child -->
@@ -84,13 +84,9 @@ include('functions/common_functions.php');
          <!-- fetching product data on the user page -->
          <?php
          // calling function;
-         getProducts();
+         searchProduct();
          get_unique_categories();
          get_unique_brands();
-
-         // $ip = getIPAddress();  
-         // echo 'User Real IP Address - '.$ip;  
-         
 
          ?>
                
@@ -128,8 +124,9 @@ include('functions/common_functions.php');
             </div>
          </div>
          <!-- last child -->
-         <!-- display footer  -->
-         <?php include('./includes/footer.php'); ?>
+            <div class="bg-info text-center p-3">
+                <p>All Right Reserved &copy;- Designed by YAPR-Studio </p>
+            </div>
       </div>
       <!-- bootstrap js cdn link -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

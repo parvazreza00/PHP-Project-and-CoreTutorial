@@ -1,5 +1,45 @@
 <?php
 include('../includes/connection.php');
+
+if(isset($_POST['product_insert'])){
+    $product_title = $_POST['product_title'];
+    $description = $_POST['description'];
+    $keywords = $_POST['keywords'];
+    $product_category = $_POST['product_category'];
+    $product_brands = $_POST['product_brands'];
+    $product_price = $_POST['product_price'];
+    $product_status = 'true';
+
+    // accessing image
+    $product_image1 = $_FILES['product_image1']['name'];
+    $product_image2 = $_FILES['product_image2']['name'];
+    $product_image3 = $_FILES['product_image3']['name'];
+    // accessing image temp name
+    $tmp_image1 = $_FILES['product_image1']['tmp_name'];
+    $tmp_image2 = $_FILES['product_image2']['tmp_name'];
+    $tmp_image3 = $_FILES['product_image3']['tmp_name'];
+    
+    // condition for field name is not empty
+    if($product_title=='' or $description=='' or $keywords=='' or $product_category=='' or $product_brands=='' or $product_price=='' or $product_image1=='' or $product_image2=='' or $product_image3==''){
+        echo "<script>alert('please, Fill all the available fields')</script>";
+    }else{
+        move_uploaded_file($tmp_image1,"./product_images/$product_image1");
+        move_uploaded_file($tmp_image2,"./product_images/$product_image2");
+        move_uploaded_file($tmp_image3,"./product_images/$product_image3");
+
+        // inset product into db table 
+        $insert_product = "INSERT INTO `products`(`product_title`, `product_des`, `product_keywords`, `category_id`, `brand_id`, `image_1`, `image_2`, `image_3`, `product_price`, `date`, `status`) VALUES ('$product_title','$description','$keywords','$product_category','$product_brands','$product_image1','$product_image2','$product_image3','$product_price',NOW(),'$product_status')";
+
+        $result_query = mysqli_query($conn, $insert_product);
+        if($result_query){
+            echo "<script>alert('Product Inserted Successfully')</script>";
+        }else{
+            echo "<script>alert('Product does not inserted')</script>";
+        }
+
+
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +47,7 @@ include('../includes/connection.php');
 <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>E-COMMERCE</title>
+      
       <!-- bootstrap css cdn link -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
       <!-- font-awesome cdn link -->
@@ -34,7 +74,7 @@ include('../includes/connection.php');
             </div>
              <!-- keywords -->
              <div class="form-outline mb-4 w-50 m-auto">
-                <label for="keywords" class="form-label">Product description</label>
+                <label for="keywords" class="form-label">Product keywords</label>
                 <input type="text" name="keywords" id="keywords" class="form-control" placeholder="Enter product keywords" autocomplete="off" required>
             </div>
              <!-- categories -->
@@ -98,9 +138,6 @@ include('../includes/connection.php');
              <div class="form-outline mb-5 w-50 m-auto">            
              <input type="submit" name="product_insert" class="btn btn-info" value="Insert Product">
             </div>
-
-
-
         </form>
 
     </div>

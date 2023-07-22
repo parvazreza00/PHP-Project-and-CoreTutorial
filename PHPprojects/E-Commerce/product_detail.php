@@ -55,8 +55,9 @@ include('functions/common_functions.php');
                </div>
             </div>
          </nav>
-         <!-- calling add to cart -->
-         <?php
+
+          <!-- calling add to cart -->
+          <?php
          cart();
          ?>
          <!-- second child -->
@@ -81,16 +82,13 @@ include('functions/common_functions.php');
             <div class="col-md-10">
                   <!-- products col -->
                   <div class="row">
+                    
          <!-- fetching product data on the user page -->
          <?php
          // calling function;
-         getProducts();
+         viewProductDetails();
          get_unique_categories();
          get_unique_brands();
-
-         // $ip = getIPAddress();  
-         // echo 'User Real IP Address - '.$ip;  
-         
 
          ?>
                
