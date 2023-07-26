@@ -1,16 +1,15 @@
 <?php
-
-include('includes/connection.php');
-include('functions/common_functions.php');
-
-?>
+   include('includes/connection.php');
+   
+   
+   ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>E-COMMERCE</title>
+      <title>E-COMMERCE Checkout page</title>
       <!-- bootstrap css cdn link -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
       <!-- font-awesome cdn link -->
@@ -41,12 +40,6 @@ include('functions/common_functions.php');
                      <li class="nav-item">
                         <a class="nav-link" href="#">Contacts</a>
                      </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php"><i class="fa fa-cart-plus" aria-hidden="true"></i><sup><?php cart_item_count(); ?></sup></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Total Price: <?php totalCartPrice(); ?>/-</a>
-                     </li>
                   </ul>
                   <form class="d-flex" role="search" action="search_product.php" method="GET">
                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
@@ -55,10 +48,6 @@ include('functions/common_functions.php');
                </div>
             </div>
          </nav>
-         <!-- calling add to cart -->
-         <?php
-         cart();
-         ?>
          <!-- second child -->
          <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
@@ -78,52 +67,20 @@ include('functions/common_functions.php');
          <!-- fourth child -->
          <div class="container-fluid">
             <div class="row">
-            <div class="col-md-10">
+               <div class="col-md-12">
                   <!-- products col -->
                   <div class="row">
-         <!-- fetching product data on the user page -->
-         <?php
-         // calling function;
-         getProducts();
-         get_unique_categories();
-         get_unique_brands();
+                    <?php
 
-         // $ip = getIPAddress();  
-         // echo 'User Real IP Address - '.$ip;  
-         
+                    if(!isset($_SESSION['username'])){
+                        include('user_area/login.php');
+                    }else{
+                        include('payment.php');
+                    }
 
-         ?>
-               
-
-                     
-                     
+                    ?>
+                    
                   </div>
-               </div>
-               <div class="col-md-2 bg-secondary p-0">
-                  <!-- sidenav col -->
-                  <!-- brands to be displayed -->
-                  <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item bg-info">
-                        <a href="#" class="nav-link text-light"><h4>Delivery Brands</h4></a>
-                    </li>
-                    <!-- fetching brands -->
-                    <?php
-                   getBrands();
-                    ?>
-                    
-                  </ul>
-                   <!-- categories to be displayed -->
-                   <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item bg-info">
-                        <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
-                    </li>
-                    <!-- displaying categories  -->
-                    <?php
-                    getCategory();
-                    ?>
-                    
-                    
-                  </ul>
                </div>
             </div>
          </div>
