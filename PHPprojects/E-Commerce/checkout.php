@@ -73,7 +73,7 @@
                     <?php
 
                     if(!isset($_SESSION['username'])){
-                        include('user_area/login.php');
+                        include('user_area/user_login.php');
                     }else{
                         include('payment.php');
                     }
